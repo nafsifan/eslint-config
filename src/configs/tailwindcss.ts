@@ -18,7 +18,7 @@ export const tailwindcss = (options: TailwindOptions & FilesOptions = {}): Confi
 				},
 			},
 			rules: {
-				'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'improved' }],
+				'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'official' }],
 				'better-tailwindcss/enforce-consistent-important-position': 'off',
 				'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
 				'better-tailwindcss/enforce-consistent-variable-syntax': 'error',

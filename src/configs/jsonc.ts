@@ -1,6 +1,6 @@
 import type { Config, FilesOptions, OverridesOptions } from '../types'
 import jsoncPlugin from 'eslint-plugin-jsonc'
-import jsoncParser from 'jsonc-eslint-parser'
+import * as jsoncParser from 'jsonc-eslint-parser'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../globs'
 
 export const jsonc = (options: OverridesOptions & FilesOptions = {}): Config[] => {

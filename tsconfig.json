@@ -3,6 +3,7 @@
 		"target": "ESNext",
 		"jsx": "react-jsx",
 		"lib": ["ESNext", "DOM"],
+		"types": ["node"],
 		"moduleDetection": "force",
 		"module": "ESNext",
 		"moduleResolution": "bundler",

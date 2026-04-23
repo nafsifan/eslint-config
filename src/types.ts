@@ -1,6 +1,6 @@
+import type { ConfigNames, Rules } from './typegen'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
-import type { ConfigNames, Rules } from './typegen'
 
 export type ExtendedConfigNames = ConfigNames | string
 
