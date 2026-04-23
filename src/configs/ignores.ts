@@ -1,6 +1,7 @@
 import type { Config, IgnoreOptions } from '../types'
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import process from 'node:process'
 import { GLOB_EXCLUDE } from '../globs'
 
 const uniquePatterns = (patterns: string[]): string[] => {

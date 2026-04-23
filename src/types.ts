@@ -304,6 +304,13 @@ export interface EnableOptions {
 	// === Framework-Specific Configurations (Auto-detected or Explicit) ===
 
 	/**
+	 * Node.js runtime and module rules.
+	 *
+	 * @default false (auto-detected if @types/node is found in dependencies)
+	 */
+	node?: boolean | OverridesOptions
+
+	/**
 	 * TypeScript rules and type checking.
 	 *
 	 * @default false (auto-detected if tsconfig.json exists)

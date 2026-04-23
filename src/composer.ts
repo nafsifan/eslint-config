@@ -1,7 +1,7 @@
 import type { Config, EnableOptions, ExtendedConfigNames } from './types'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
-import { comments, ignores, imports, javascript, jsdoc, jsonc, sort, stylistic, unicorn } from './configs'
-import { hasNextjs, hasReact, hasTailwindcss, hasTypeScript, hasVue } from './utils'
+import { comments, ignores, imports, javascript, jsdoc, jsonc, node, sort, stylistic, unicorn } from './configs'
+import { hasNextjs, hasNodejs, hasReact, hasTailwindcss, hasTypeScript, hasVue } from './utils'
 
 export const nafsifan = async (
 	options: EnableOptions = {},
@@ -16,6 +16,7 @@ export const nafsifan = async (
 		imports: enableImports = true,
 		sort: enableSort = true,
 		ignores: enableIgnores = true,
+		node: enableNode = hasNodejs() && options?.node !== false,
 		typescript: enableTypescript = hasTypeScript() && options?.typescript !== false,
 		react: enableReact = hasReact() && options?.react !== false,
 		vue: enableVue = hasVue() && options?.vue !== false,
@@ -84,6 +85,12 @@ export const nafsifan = async (
 
 		composer = composer.append(
 			...ignores(ignoreOptions),
+		)
+	}
+
+	if (enableNode) {
+		composer = composer.append(
+			...node(typeof enableNode === 'object' ? enableNode : {}),
 		)
 	}
 

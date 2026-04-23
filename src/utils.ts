@@ -38,3 +38,10 @@ export function hasNextjs(): boolean {
 export function hasTailwindcss(): boolean {
 	return isPackageExists('tailwindcss')
 }
+
+/**
+ * Check if project uses Node.js
+ */
+export function hasNodejs(): boolean {
+	return isPackageExists('@types/node')
+}
