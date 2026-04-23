@@ -1,0 +1,81 @@
+{
+	"name": "@nafsifan/eslint-config",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "Nafsi is eslint flat config.",
+	"keywords": [
+		"eslint-config"
+	],
+	"author": "Nafsi",
+	"license": "MIT",
+	"homepage": "https://github.com/nafsifan/eslint-config#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nafsifan/eslint-config.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nafsifan/eslint-config/issues"
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "pnpm dlx @eslint/config-inspector@latest --config eslint-inspector.config.ts",
+		"build": "pnpm run build:typegen && tsdown",
+		"build:typegen": "tsx scripts/typegen.ts",
+		"build:inspector": "pnpm dlx @eslint/config-inspector@latest build --config eslint-inspector.config.ts",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"typecheck": "tsc --noEmit",
+		"prepublishOnly": "pnpm run build"
+	},
+	"packageManager": "pnpm@10.16.1",
+	"peerDependencies": {
+		"eslint": "^9.34.0"
+	},
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": true
+		}
+	},
+	"dependencies": {
+		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
+		"@next/eslint-plugin-next": "^15.5.15",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"@typescript-eslint/eslint-plugin": "^8.59.0",
+		"@typescript-eslint/parser": "^8.59.0",
+		"eslint-flat-config-utils": "^2.1.4",
+		"eslint-plugin-better-tailwindcss": "^3.8.0",
+		"eslint-plugin-import-x": "^4.16.2",
+		"eslint-plugin-jsdoc": "^57.2.1",
+		"eslint-plugin-jsonc": "^2.21.1",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-n": "^17.24.0",
+		"eslint-plugin-perfectionist": "^4.15.1",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"eslint-plugin-unicorn": "^61.0.2",
+		"eslint-plugin-unused-imports": "^4.4.1",
+		"eslint-plugin-vue": "^9.33.0",
+		"eslint-plugin-vuejs-accessibility": "^2.5.0",
+		"globals": "^16.5.0",
+		"jsonc-eslint-parser": "^2.4.2",
+		"local-pkg": "^0.5.1",
+		"typescript-eslint": "^8.59.0",
+		"vue-eslint-parser": "^9.4.3"
+	},
+	"devDependencies": {
+		"@types/eslint-plugin-jsx-a11y": "^6.10.1",
+		"@types/node": "^24.12.2",
+		"eslint": "^9.39.4",
+		"eslint-typegen": "^2.3.1",
+		"tsdown": "^0.14.2",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
+	}
+}
