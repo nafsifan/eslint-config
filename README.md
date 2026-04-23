@@ -108,7 +108,7 @@ export default await nafsifan({
 	// 默认启用，代码排序规则
 	sort: true,
 
-	// 默认启用，指定 ESLint 忽略的文件或目录
+	// 默认启用，指定 ESLint 忽略的文件或目录（自动合并根目录 .gitignore）
 	ignores: true,
 
 	// 自动检测并开启，TypeScript 格式化规则
@@ -142,6 +142,13 @@ export default await nafsifan({
 		overrides: {
 		'@typescript-eslint/no-explicit-any': 'warn'
 		}
+	},
+
+	// 忽略配置：默认 useGitignore: true，可关闭或自定义路径
+	ignores: {
+		useGitignore: true,
+		gitignorePath: '.gitignore',
+		patterns: ['**/fixtures/**']
 	},
 	
 	// Tailwind 配置支持 
