@@ -78,8 +78,12 @@ export const nafsifan = async (
 	}
 
 	if (enableIgnores) {
+		const ignoreOptions = Array.isArray(enableIgnores)
+			? { patterns: enableIgnores }
+			: (typeof enableIgnores === 'object' ? enableIgnores : {})
+
 		composer = composer.append(
-			...ignores(Array.isArray(enableIgnores) ? enableIgnores : []),
+			...ignores(ignoreOptions),
 		)
 	}
 

@@ -80,6 +80,32 @@ export interface FilesOptions {
 }
 
 /**
+ * Configuration options for ignore patterns.
+ */
+export interface IgnoreOptions {
+	/**
+	 * Additional ignore patterns to append after built-in and .gitignore patterns.
+	 *
+	 * @default []
+	 */
+	patterns?: string[]
+
+	/**
+	 * Whether to read and merge ignore patterns from the project root .gitignore file.
+	 *
+	 * @default true
+	 */
+	useGitignore?: boolean
+
+	/**
+	 * Custom .gitignore file path.
+	 *
+	 * @default process.cwd() + '/.gitignore'
+	 */
+	gitignorePath?: string
+}
+
+/**
  * Configuration options for React linting.
  *
  * Extends base override functionality with React-specific settings.
@@ -273,7 +299,7 @@ export interface EnableOptions {
 	 * @default true (uses predefined ignore patterns)
 	 * @example ['dist/**', 'node_modules/**', '*.config.js']
 	 */
-	ignores?: boolean | string[]
+	ignores?: boolean | string[] | IgnoreOptions
 
 	// === Framework-Specific Configurations (Auto-detected or Explicit) ===
 
