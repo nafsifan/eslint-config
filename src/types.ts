@@ -306,7 +306,7 @@ export interface EnableOptions {
 	/**
 	 * Node.js runtime and module rules.
 	 *
-	 * @default false (auto-detected if @types/node is found in dependencies)
+	 * @default true
 	 */
 	node?: boolean | OverridesOptions
 

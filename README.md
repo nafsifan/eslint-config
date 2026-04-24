@@ -111,7 +111,7 @@ export default await nafsifan({
 	// 默认启用，指定 ESLint 忽略的文件或目录（自动合并根目录 .gitignore）
 	ignores: true,
 
-	// 自动检测并开启，Node.js 规则
+	// 默认启用，Node.js 规则
 	node: true,
 
 	// 自动检测并开启，TypeScript 格式化规则
