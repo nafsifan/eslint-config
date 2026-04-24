@@ -1,29 +1,12 @@
 import type { Config, IgnoreOptions } from '../types'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import process from 'node:process'
+import { includeIgnoreFile } from '@eslint/compat'
 import { GLOB_EXCLUDE } from '../globs'
 
 const uniquePatterns = (patterns: string[]): string[] => {
 	return [...new Set(patterns)]
-}
-
-const getGitignorePatterns = (gitignorePath: string): string[] => {
-	if (!existsSync(gitignorePath)) {
-		return []
-	}
-
-	try {
-		const content = readFileSync(gitignorePath, 'utf8')
-
-		return content
-			.split(/\r?\n/u)
-			.map(line => line.trim())
-			.filter(line => line.length > 0 && !line.startsWith('#'))
-	}
-	catch {
-		return []
-	}
 }
 
 export const ignores = (options: IgnoreOptions = {}): Config[] => {
@@ -33,8 +16,8 @@ export const ignores = (options: IgnoreOptions = {}): Config[] => {
 		gitignorePath = resolve(process.cwd(), '.gitignore'),
 	} = options
 
-	const gitignorePatterns = useGitignore
-		? getGitignorePatterns(gitignorePath)
+	const gitignorePatterns = useGitignore && existsSync(gitignorePath)
+		? (includeIgnoreFile(gitignorePath).ignores ?? [])
 		: []
 
 	return [
