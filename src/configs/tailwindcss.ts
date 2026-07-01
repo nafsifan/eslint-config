@@ -1,9 +1,16 @@
 import type { Config, FilesOptions, TailwindOptions } from '../types'
+import { isAbsolute, resolve } from 'node:path'
+import process from 'node:process'
 import tailwind from 'eslint-plugin-better-tailwindcss'
 import { GLOB_REACT, GLOB_VUE } from '../globs'
 
 export const tailwindcss = (options: TailwindOptions & FilesOptions = {}): Config[] => {
 	const { overrides = {}, settings = {}, files = [GLOB_REACT, GLOB_VUE] } = options
+
+	const resolvedSettings = { ...settings }
+	if (resolvedSettings.entryPoint && !isAbsolute(resolvedSettings.entryPoint)) {
+		resolvedSettings.entryPoint = resolve(process.cwd(), resolvedSettings.entryPoint)
+	}
 
 	return [
 		{
@@ -13,9 +20,7 @@ export const tailwindcss = (options: TailwindOptions & FilesOptions = {}): Confi
 				'better-tailwindcss': tailwind,
 			},
 			settings: {
-				'better-tailwindcss': {
-					...settings,
-				},
+				'better-tailwindcss': resolvedSettings,
 			},
 			rules: {
 				'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'official' }],
