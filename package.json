@@ -1,7 +1,7 @@
 {
 	"name": "@nafsifan/eslint-config",
 	"type": "module",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "Nafsi is eslint flat config.",
 	"keywords": [
 		"eslint-config"
